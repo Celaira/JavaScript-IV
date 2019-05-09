@@ -72,6 +72,8 @@ const fred = new Instructor({
   * If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
 
+const faker = require("faker");
+
 class Person {
     constructor(attributes) {
         this.name = attributes.name;
@@ -101,9 +103,9 @@ class Instructor extends Person {
     }
 
     scoring(student, grade) {
-            if(student.grade === 100) {
+            if(student.grade > 90) {
                return `${student.name}'s grade is now ${student.grade = student.grade - Math.floor(Math.random() * 100)}`;
-            } else if(student.grade < 100) {
+            } else if(student.grade <= 90) {
                 return `${student.name}'s grade is now ${student.grade = student.grade + Math.floor(Math.random() * 10)}`;
             }
         }
@@ -155,7 +157,7 @@ class projectManager extends Instructor {
 }
 
 const fred = new Instructor({
-    name: 'Fred',
+    name: faker.name.findName(),
     location: 'Bedrock',
     age: 37,
     favLanguage: 'JavaScript',
@@ -208,7 +210,7 @@ const morgan = new Student({
     favSubjects: ['JavaScript', 'CSS', 'React', 'HTML']
 });
 
-console.log(morgan.speak());
+console.log(fred.speak());
 console.log(morgan.PRAssignment(morgan.favSubjects[0]));
 console.log(velma.speak());
 console.log(fred.grade(morgan, morgan.favSubjects[0]));
